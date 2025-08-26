@@ -288,15 +288,15 @@
     };
 
     // Seed data (demo)
-    const seedIfEmpty = () => {
-      if (!localStorage.getItem('items')) {
-        ls.set('items', []); // sin demo
+    
+  const seedIfEmpty = () => {
+    if (!localStorage.getItem('items')) {
+      ls.set('items', []); // sin demo
     }
+    if (!localStorage.getItem('orders')) ls.set('orders', []);
+    if (!localStorage.getItem('me')) ls.set('me', { name: 'Vendedora', city: 'CDMX', whats: '' });
+};
 
-      }
-      if (!localStorage.getItem('orders')) ls.set('orders', []);
-      if (!localStorage.getItem('me')) ls.set('me', { name: 'Vendedora', city: 'CDMX', whats: '' });
-    };
 
     let ITEMS = [];
     let ORDERS = [];

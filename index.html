@@ -290,12 +290,9 @@
     // Seed data (demo)
     const seedIfEmpty = () => {
       if (!localStorage.getItem('items')) {
-        const demo = [
-          { id: crypto.randomUUID(), sellerName: 'Ana', sellerWhats: '5512345678', city: 'CDMX', category: 'Ropa de mujer', subcat: 'Vestidos', title: 'Vestido midi floral', price: 320, size: 'M', condition: 'Casi nuevo', brand: 'Zara', description: 'Muy poco uso, corte midi.', images: ['https://images.unsplash.com/photo-1532536018-0d3e9a3e9f84?q=80&w=600&auto=format&fit=crop'], status: 'activo', createdAt: Date.now(), badges:['Vendedora fundadora'] },
-          { id: crypto.randomUUID(), sellerName: 'Lu', sellerWhats: '5511122233', city: 'CDMX', category: 'Ropa de mujer', subcat: 'Tops', title: 'Top satinado', price: 180, size: 'S', condition: 'Uso leve', brand: '—', description: 'Ideal para noche.', images: ['https://images.unsplash.com/photo-1520975979642-6453be3f7070?q=80&w=600&auto=format&fit=crop'], status: 'activo', createdAt: Date.now() - 3600_000, badges:[] },
-          { id: crypto.randomUUID(), sellerName: 'Mar', sellerWhats: '5599988877', city: 'CDMX', category: 'Ropa de mujer', subcat: 'Abrigos', title: 'Abrigo beige', price: 480, size: 'L', condition: 'Nuevo', brand: 'H&M', description: 'Calientito y ligero.', images: ['https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=600&auto=format&fit=crop'], status: 'activo', createdAt: Date.now() - 7200_000, badges:['Vendedora fundadora'] },
-        ];
-        ls.set('items', demo);
+        ls.set('items', []); // sin demo
+    }
+
       }
       if (!localStorage.getItem('orders')) ls.set('orders', []);
       if (!localStorage.getItem('me')) ls.set('me', { name: 'Vendedora', city: 'CDMX', whats: '' });

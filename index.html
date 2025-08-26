@@ -132,12 +132,15 @@
         <h3 class="text-lg font-bold">Publicar prenda — Ropa de mujer</h3>
         <button class="text-zinc-500 hover:text-zinc-800" onclick="closeModal('modalPublish')">✕</button>
       </div>
+
       <form id="publishForm" class="grid md:grid-cols-2 gap-4">
+        <!-- Columna izquierda -->
         <div class="space-y-3">
           <div>
             <label class="text-sm font-medium">Título</label>
             <input required id="pTitle" class="w-full mt-1 px-3 py-2 rounded-xl border border-zinc-300" placeholder="Ej. Vestido midi floral" />
           </div>
+
           <div>
             <label class="text-sm font-medium">Tipo</label>
             <select required id="pSubcat" class="w-full mt-1 px-3 py-2 rounded-xl border border-zinc-300">
@@ -149,13 +152,14 @@
               <option>Conjuntos</option>
             </select>
           </div>
+
           <div>
             <label class="text-sm font-medium">Talla</label>
             <select id="pSize" class="w-full mt-1 px-3 py-2 rounded-xl border border-zinc-300">
               <option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option>
             </select>
           </div>
-          <div>
+
           <div>
             <label class="text-sm font-medium">Condición</label>
             <select id="pCondition" class="w-full mt-1 px-3 py-2 rounded-xl border border-zinc-300">
@@ -165,10 +169,13 @@
             </select>
           </div>
 
+          <div>
             <label class="text-sm font-medium">Marca</label>
             <input id="pBrand" class="w-full mt-1 px-3 py-2 rounded-xl border border-zinc-300" placeholder="Ej. Zara, Bershka" />
           </div>
         </div>
+
+        <!-- Columna derecha -->
         <div class="space-y-3">
           <div>
             <label class="text-sm font-medium">Ciudad</label>
@@ -178,10 +185,12 @@
               <option>Monterrey</option>
             </select>
           </div>
+
           <div>
             <label class="text-sm font-medium">Precio (MXN)</label>
             <input required type="number" min="1" id="pPrice" class="w-full mt-1 px-3 py-2 rounded-xl border border-zinc-300" placeholder="Ej. 350" />
           </div>
+
           <!-- Subida de fotos con Cloudinary -->
           <div>
             <label class="text-sm font-medium">Fotos (hasta 4)</label>
@@ -193,13 +202,15 @@
             <p class="text-xs text-zinc-500 mt-1">Se guardan automáticamente en la nube y aquí solo vemos una vista previa.</p>
           </div>
         </div>
+
         <div class="md:col-span-2">
           <label class="text-sm font-medium">Descripción</label>
           <textarea id="pDesc" rows="3" class="w-full mt-1 px-3 py-2 rounded-xl border border-zinc-300" placeholder="Detalles, medidas, notas"></textarea>
         </div>
+
         <div class="md:col-span-2 flex items-center justify-end gap-3 pt-2">
           <button type="button" class="btn btn-ghost" onclick="closeModal('modalPublish')">Cancelar</button>
-          <button class="btn btn-primary">Publicar</button>
+          <button type="submit" class="btn btn-primary">Publicar</button>
         </div>
       </form>
     </div>
@@ -220,7 +231,7 @@
           <option value="envio">Envío por paquetería</option>
         </select>
       </div>
-      <div id="shippingNote" class="mt-3 text-xs text-zinc-500 hidden">Para envío, el vendedor generará guía y te compartirá el rastreo. En fase 2 se auto‑creará con Skydropx.</div>
+      <div id="shippingNote" class="mt-3 text-xs text-zinc-500 hidden">Para envío, el vendedor generará guía y te compartirá el rastreo. En fase 2 se auto-creará con Skydropx.</div>
       <div class="mt-6 flex items-center justify-end gap-3">
         <button class="btn btn-ghost" onclick="closeModal('modalBuy')">Cancelar</button>
         <button id="btnPay" class="btn btn-primary">Pagar (simulado)</button>
@@ -272,14 +283,9 @@
   </div>
 
   <script>
-    // ====== Configura Cloudinary ======
-    // 1) Crea cuenta en https://cloudinary.com/ (gratis)
-    // 2) En Dashboard, copia tu cloud name
-    // 3) Crea un Upload Preset SIN firmar (unsigned)
-    // 4) Sustituye las constantes de abajo:
+    // ====== Configura Cloudinary (ya con tus datos) ======
     const CLOUD_NAME = "diedjawe1"; 
     const UPLOAD_PRESET = "mujer_mvp";
-
 
     // LocalStorage helpers
     const ls = {
@@ -287,16 +293,14 @@
       set: (k, v) => localStorage.setItem(k, JSON.stringify(v)),
     };
 
-    // Seed data (demo)
-    
-  const seedIfEmpty = () => {
-    if (!localStorage.getItem('items')) {
-      ls.set('items', []); // sin demo
-    }
-    if (!localStorage.getItem('orders')) ls.set('orders', []);
-    if (!localStorage.getItem('me')) ls.set('me', { name: 'Vendedora', city: 'CDMX', whats: '' });
-};
-
+    // Seed vacía (sin demo)
+    const seedIfEmpty = () => {
+      if (!localStorage.getItem('items')) {
+        ls.set('items', []); // sin demo
+      }
+      if (!localStorage.getItem('orders')) ls.set('orders', []);
+      if (!localStorage.getItem('me')) ls.set('me', { name: 'Vendedora', city: 'CDMX', whats: '' });
+    };
 
     let ITEMS = [];
     let ORDERS = [];
@@ -601,4 +605,5 @@
   </script>
 </body>
 </html>
+
 
